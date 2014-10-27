@@ -1,0 +1,37 @@
+<html>
+<head>
+<script type='text/javascript' src='http://www.google.com/jsapi'></script>
+<script type='text/javascript'>
+	google.load('visualization', '1', {'packages': ['geomap']});
+	google.setOnLoadCallback(drawMap);
+	function drawMap() {
+		var data = new google.visualization.DataTable();
+		data.addRows(6);
+		data.addColumn('string', 'Country');
+		data.addColumn('number', 'Energy Savings');
+		data.setValue(0, 0, 'US-AZ');
+		data.setValue(0, 1, 18);    
+		data.setValue(1, 0, 'US-LA');
+		data.setValue(1, 1, 32);
+		data.setValue(2, 0, 'US-MI');
+		data.setValue(2, 1, 21);
+		data.setValue(3, 0, 'US-MN');
+		data.setValue(3, 1, 30);
+		data.setValue(4, 0, 'US-CH');
+		data.setValue(4, 1, 26);
+		data.setValue(5, 0, 'US-NJ');
+		data.setValue(5, 1, 17);
+		
+		var options = {};
+		options['region'] = 'US';
+		options['colors'] = [0xE57878, 0xECEE5D, 0x6CEE62];
+		var container = document.getElementById('map_canvas');
+		var geomap = new google.visualization.GeoMap(container);
+		geomap.draw(data, options);
+	};
+  </script>
+</head>
+<body>
+<div id='map_canvas'></div>
+</body>
+</html>
